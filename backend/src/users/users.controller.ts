@@ -78,7 +78,7 @@ import {
   
       const createdUser = await this.usersService.create(
   
-        body.name,
+        body.email,
   
         body.password,
   
