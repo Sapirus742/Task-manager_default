@@ -118,7 +118,7 @@
   
       lastname.value = response.lastname;
   
-      name.value = response.name;
+      name.value = response.email;
   
       roles.value = response.roles;
   
@@ -138,7 +138,7 @@
   
       const newUser: CreateUserDto = {
   
-        name: name.value,
+        email: name.value,
   
         firstname: firstname.value,
   
@@ -172,7 +172,7 @@
   
       const updatedUser: UpdateUserDto = {
   
-        name: name.value,
+        email: name.value,
   
         firstname: firstname.value,
   
