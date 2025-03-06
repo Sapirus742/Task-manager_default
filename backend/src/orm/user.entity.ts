@@ -5,8 +5,8 @@ import {
   CreateDateColumn,
   ManyToOne,
   OneToMany,
-  UpdateDateColumn,
-  VersionColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';   
 
 import { Team } from './team.entity';
@@ -61,6 +61,12 @@ export class User {
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
 
+  @OneToOne(() => Team, (team) => team.user_leader)
+  team_leader: Team;
+  
+  @OneToMany(() => Team, (team) => team.user_owner)
+  team_owner: Team[];
+
   @OneToMany(() => Portfolio, (portfolio) => portfolio.user)
   portfolio: Portfolio[];
 
@@ -79,7 +85,7 @@ export class User {
   @OneToMany(() => Comments, (comment) => comment.users)
   comment: Comments[];
 
-  @ManyToOne(() => Team, (team) => team.user, {onDelete: 'SET NULL' })
+  @ManyToOne(() => Team, (team) => team.user, { onDelete: 'SET NULL' })
   team: Team;
   
   getSecuredDto(): SecuredUser {
