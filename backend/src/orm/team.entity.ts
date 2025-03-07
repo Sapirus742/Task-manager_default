@@ -38,7 +38,7 @@ export class Team {
 
     @OneToOne(() => User, { cascade: true })
     @JoinColumn()
-    user_leader: User;
+    user_leader: Promise<User>;
 
     @OneToMany(() => User, (user) => user.team)
     user: User[];

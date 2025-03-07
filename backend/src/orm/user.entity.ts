@@ -85,7 +85,7 @@ export class User {
   @OneToMany(() => Comments, (comment) => comment.users)
   comment: Comments[];
 
-  @ManyToOne(() => Team, (team) => team.user, { onDelete: 'SET NULL' })
+  @ManyToOne(() => Team, (team) => team.user, {eager: true, onDelete: 'SET NULL' })
   team: Team;
   
   getSecuredDto(): SecuredUser {
